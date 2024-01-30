@@ -1,10 +1,10 @@
 import { TCell } from 'types'
 import styles from './cell.module.css'
 
-const isDarkCell = (x: TCell['x'], y: TCell['y']) => (x + y) % 2 === 1
+const isDarkCell = (position: TCell['position']) => (position.x + position.y) % 2 === 1
 
-export const Cell = ({ x, y, id }: TCell) => {
-  const cellColorClass = isDarkCell(x, y) ? styles.dark : styles.light
+export const Cell = ({ position, id }: TCell) => {
+  const cellColorClass = isDarkCell(position) ? styles.dark : styles.light
 
-  return <div className={`${styles.cell} ${cellColorClass}`}>{x + ',' + y}</div>
+  return <div className={`${styles.cell} ${cellColorClass}`}>{position.x + ',' + position.y}</div>
 }

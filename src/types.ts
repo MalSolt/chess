@@ -1,5 +1,6 @@
 export type TCell = {
   id: string
-  x: number
-  y: number
+  position: TPosition
 }
+
+export type TPosition = { x: number; y: number }

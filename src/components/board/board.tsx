@@ -9,7 +9,8 @@ const createBoard = () => {
   for (let row = 1; row <= 8; row++) {
     const rowCells: TCell[] = []
     for (let col = 1; col <= 8; col++) {
-      rowCells.push({ x: col, y: row, id: nanoid() })
+      const position = { x: col, y: row }
+      rowCells.push({ position, id: nanoid() })
     }
     board.push(rowCells)
   }
