@@ -19,7 +19,6 @@ const createBoard = () => {
 }
 
 const board = createBoard()
-console.log({ board })
 
 const renderBoard = () => {
   return board.map((row, rowIndex) => (
