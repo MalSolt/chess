@@ -1,3 +1,9 @@
+import { Board } from 'components/board/board'
+
 export const App = () => {
-  return <div className=''>Malik</div>
+  return (
+    <div>
+      <Board />
+    </div>
+  )
 }
