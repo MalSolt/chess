@@ -1,4 +1,3 @@
-import { nanoid } from 'nanoid'
 import styles from './board.module.css'
 import { Cell } from 'components/cell/cell'
 import { TCell } from 'types'
@@ -9,8 +8,7 @@ const createBoard = () => {
   for (let row = 1; row <= 8; row++) {
     const rowCells: TCell[] = []
     for (let col = 1; col <= 8; col++) {
-      const position = { x: col, y: row }
-      rowCells.push({ position, id: nanoid() })
+      rowCells.push({ x: col, y: row })
     }
     board.push(rowCells)
   }
@@ -24,7 +22,7 @@ const renderBoard = () => {
   return board.map((row, rowIndex) => (
     <div key={rowIndex} className={styles.row}>
       {row.map((cell) => {
-        return <Cell key={cell.id} {...cell} />
+        return <Cell key={`${cell.x}${cell.y}`} {...cell} />
       })}
     </div>
   ))
