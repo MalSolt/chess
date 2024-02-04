@@ -1,24 +1,10 @@
-import styles from './board.module.css'
 import { Cell } from 'components/cell/cell'
-import { TCell } from 'types'
-
-const createBoard = () => {
-  const board = []
-
-  for (let row = 1; row <= 8; row++) {
-    const rowCells: TCell[] = []
-    for (let col = 1; col <= 8; col++) {
-      rowCells.push({ x: col, y: row })
-    }
-    board.push(rowCells)
-  }
-
-  return board.reverse()
-}
-
-const board = createBoard()
+import { useBoardStore } from 'store'
+import styles from './board.module.css'
 
 const renderBoard = () => {
+  const board = useBoardStore.getState().board
+
   return board.map((row, rowIndex) => (
     <div key={rowIndex} className={styles.row}>
       {row.map((cell) => {
