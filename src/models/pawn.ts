@@ -12,16 +12,19 @@ export class Pawn {
   }
 
   canMove(cellPosition: TPosition) {
-    return true
+    if (
+      this.isFirstMove &&
+      cellPosition.x === this.position.x &&
+      cellPosition.y - this.position.y <= 2
+    ) {
+      return true
+    }
   }
 
   move(cellPosition: TPosition) {
     if (this.isFirstMove) {
       this.position = cellPosition
+      this.isFirstMove = false
     }
-
-    const canMove = this.canMove(cellPosition)
-
-    if (!canMove) return
   }
 }
