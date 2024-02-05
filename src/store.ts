@@ -22,7 +22,7 @@ const board = createBoard()
 //create pieces initial state
 const pieces: Record<string, Pawn> = {
   '1,2': new Pawn({ x: 1, y: 2 }),
-  '2,2': new Pawn({ x: 2, y: 2 }),
+  '1,3': new Pawn({ x: 1, y: 3 }),
   '3,2': new Pawn({ x: 3, y: 2 }),
   '4,2': new Pawn({ x: 4, y: 2 }),
   '5,2': new Pawn({ x: 5, y: 2 }),
@@ -56,17 +56,22 @@ export const useBoardStore = create<State>()((set) => ({
           return state
         }
 
-        const canMove = state.pieces[selectedKey]?.canMove(position)
-        if (canMove) {
-          state.pieces[selectedKey].move(position)
-          tempPieces[targetKey] = state.pieces[selectedKey]
-          delete tempPieces[selectedKey]
+        if (tempPieces[targetKey]) {
+          return { selectedPiece: position }
         }
+
+        const canMove = tempPieces[selectedKey]?.canMove(position)
+        if (canMove) {
+          tempPieces[selectedKey].move(position)
+          tempPieces[targetKey] = tempPieces[selectedKey]
+          delete tempPieces[selectedKey]
+          return { selectedPiece: null, pieces: tempPieces }
+        }
+
+        return { pieces: tempPieces }
       } else {
         return { selectedPiece: position }
       }
-
-      return { selectedPiece: null, pieces: tempPieces }
     })
   },
 }))

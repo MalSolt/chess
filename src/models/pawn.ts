@@ -19,12 +19,16 @@ export class Pawn {
     ) {
       return true
     }
+
+    if (cellPosition.x === this.position.x && cellPosition.y - this.position.y === 1) {
+      return true
+    }
+
+    return false
   }
 
   move(cellPosition: TPosition) {
-    if (this.isFirstMove) {
-      this.position = cellPosition
-      this.isFirstMove = false
-    }
+    this.position = cellPosition
+    this.isFirstMove = false
   }
 }
