@@ -1,34 +1,29 @@
 import { nanoid } from 'nanoid'
 import { TPosition } from 'types'
 
-export class Pawn {
+export class Knight {
   id = nanoid()
-  isFirstMove = true
   position: TPosition
-  image = 'https://i.pinimg.com/originals/c2/09/08/c20908ec4f6f913c8f4064e644999a90.png'
+  image = 'https://static.thenounproject.com/png/589743-200.png'
 
   constructor(position: TPosition) {
     this.position = position
   }
 
   canMove(cellPosition: TPosition) {
-    // if (
-    //   this.isFirstMove &&
-    //   cellPosition.x === this.position.x &&
-    //   cellPosition.y - this.position.y <= 2
-    // ) {
-    //   return true
-    // }
+    if (
+      (Math.abs(cellPosition.x - this.position.x) === 2 &&
+        Math.abs(cellPosition.y - this.position.y) === 1) ||
+      (Math.abs(cellPosition.x - this.position.x) === 1 &&
+        Math.abs(cellPosition.y - this.position.y) === 2)
+    ) {
+      return true
+    }
 
-    // if (cellPosition.x === this.position.x && cellPosition.y - this.position.y === 1) {
-    //   return true
-    // }
-
-    // return false
+    return false
   }
 
   move(cellPosition: TPosition) {
-    // this.position = cellPosition
-    // this.isFirstMove = false
+    this.position = cellPosition
   }
 }
