@@ -1,3 +1,4 @@
+import { King } from 'models/king'
 import { Knight } from 'models/knight'
 import { Pawn } from 'models/pawn'
 import { TCell, TPosition } from 'types'
@@ -21,7 +22,7 @@ const createBoard = () => {
 const board = createBoard()
 
 //create pieces initial state
-const pieces: Record<string, Pawn | Knight> = {
+const pieces: Record<string, Pawn | Knight | King> = {
   '1,2': new Pawn({ x: 1, y: 2 }),
   '2,2': new Pawn({ x: 2, y: 2 }),
   '3,2': new Pawn({ x: 3, y: 2 }),
@@ -31,6 +32,7 @@ const pieces: Record<string, Pawn | Knight> = {
   '7,2': new Pawn({ x: 7, y: 2 }),
   '8,2': new Pawn({ x: 8, y: 2 }),
   '2,1': new Knight({ x: 2, y: 1 }),
+  '5,5': new King({ x: 5, y: 5 }),
 }
 
 //create store
