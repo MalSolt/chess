@@ -2,6 +2,7 @@ import { King } from 'models/king'
 import { Knight } from 'models/knight'
 import { Pawn } from 'models/pawn'
 import { Queen } from 'models/queen'
+import { Rook } from 'models/rook'
 import { TCell, TPosition } from 'types'
 import { create } from 'zustand'
 
@@ -35,6 +36,8 @@ const pieces: Record<string, Pawn | Knight | King | Queen> = {
   '2,1': new Knight({ x: 2, y: 1 }),
   '5,1': new King({ x: 5, y: 1 }),
   '4,1': new Queen({ x: 4, y: 1 }),
+  '1,1': new Rook({ x: 1, y: 1 }),
+  '8,1': new Rook({ x: 8, y: 1 }),
 }
 
 //create store
