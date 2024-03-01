@@ -1,3 +1,4 @@
+import { Bishop } from 'models/bishop'
 import { King } from 'models/king'
 import { Knight } from 'models/knight'
 import { Pawn } from 'models/pawn'
@@ -34,10 +35,13 @@ const pieces: Record<string, Pawn | Knight | King | Queen> = {
   '7,2': new Pawn({ x: 7, y: 2 }),
   '8,2': new Pawn({ x: 8, y: 2 }),
   '2,1': new Knight({ x: 2, y: 1 }),
+  '7,1': new Knight({ x: 7, y: 1 }),
   '5,1': new King({ x: 5, y: 1 }),
   '4,1': new Queen({ x: 4, y: 1 }),
   '1,1': new Rook({ x: 1, y: 1 }),
   '8,1': new Rook({ x: 8, y: 1 }),
+  '3,1': new Bishop({ x: 3, y: 1 }),
+  '6,1': new Bishop({ x: 6, y: 1 }),
 }
 
 //create store
